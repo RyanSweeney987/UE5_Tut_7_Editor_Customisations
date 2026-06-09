@@ -14,6 +14,8 @@
 
 #define LOCTEXT_NAMESPACE "FExamplePluginSettingsCustomization"
 
+// Definitions to things in IDetailCategoryBuilder can be found in DetailCategoryBuilderImpl.cpp
+
 TSharedRef<IDetailCustomization> FExamplePluginSettingsCustomization::MakeInstance()
 {
 	return MakeShared<FExamplePluginSettingsCustomization>();
@@ -23,6 +25,8 @@ void FExamplePluginSettingsCustomization::CustomizeDetails(IDetailLayoutBuilder&
 {
 	// Set the property handle for the ExampleFloat property so we can modify it when the button is clicked
 	ExampleFloatProperty = DetailBuilder.GetProperty(GET_MEMBER_NAME_CHECKED(UExamplePluginSettings, ExampleFloat));
+	// We need this so we can force the details panel to refresh after modifying the property value
+	PropertyUtilities = DetailBuilder.GetPropertyUtilities();
 
 	// We hide and then re-add later to force the ordering of the property and button so that the button appears directly below the property
 	DetailBuilder.HideProperty(ExampleFloatProperty);
