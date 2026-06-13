@@ -8,7 +8,8 @@ void FUE5_Tut_7_Editor_Customisations_SettingsEditorModule::StartupModule()
 {
 	// Register the details customisation for our settings object
 	FPropertyEditorModule& PropertyEditorModule = FModuleManager::LoadModuleChecked<FPropertyEditorModule>("PropertyEditor");
-	PropertyEditorModule.RegisterCustomClassLayout(UExamplePluginSettings::StaticClass()->GetFName(), FOnGetDetailCustomizationInstance::CreateStatic(&FExamplePluginSettingsCustomization::MakeInstance));
+	PropertyEditorModule.RegisterCustomClassLayout(UExamplePluginSettings::StaticClass()->GetFName(), 
+		FOnGetDetailCustomizationInstance::CreateStatic(&FExamplePluginSettingsCustomization::MakeInstance));
 	PropertyEditorModule.NotifyCustomizationModuleChanged();
 }
 
